@@ -501,6 +501,29 @@ h1,h2,h3{font-weight:var(--fw-bold);line-height:var(--lh-tight)}
 .foot-in{display:flex;justify-content:space-between;gap:var(--s-4);flex-wrap:wrap}
 .foot span{font-size:var(--fs-xs);color:var(--c-ink-3)}
 
+/* ---------- 13b. 案例正文（可展开全文） ---------- */
+.article{margin-top:var(--s-6);border-top:var(--bw) solid var(--c-line-soft)}
+.article-toggle{
+  display:inline-flex;align-items:center;gap:var(--s-3);
+  min-height:48px;padding-top:var(--s-4);
+  font-size:var(--fs-body);font-weight:var(--fw-bold);color:var(--c-accent);
+  cursor:pointer;list-style:none;
+}
+.article-toggle::-webkit-details-marker{display:none}
+.article-toggle .ar{font-size:var(--fs-sm);line-height:1;transition:transform var(--t-base)}
+.article[open] .article-toggle .ar{transform:rotate(180deg)}
+.article-toggle:hover{text-decoration:underline;text-underline-offset:4px}
+.article-body{
+  margin-top:var(--s-5);max-width:44em;
+  padding-left:var(--s-5);border-left:3px solid var(--c-accent);
+}
+.article-body p{margin-bottom:var(--s-4);font-size:var(--fs-body);line-height:1.85;color:var(--c-ink-2)}
+.article-body .article-lead{font-size:var(--fs-h3);line-height:var(--lh-snug);font-weight:var(--fw-bold);color:var(--c-ink)}
+.article-body .article-note{
+  margin-top:var(--s-5);margin-bottom:0;
+  font-size:var(--fs-xs);line-height:1.65;color:var(--c-ink-3);
+}
+
 /* ---------- 14. 滚动揭示 ---------- */
 .rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--t-base),transform .7s var(--t-base)}
 .rv.in{opacity:1;transform:none}
@@ -531,6 +554,7 @@ h1,h2,h3{font-weight:var(--fw-bold);line-height:var(--lh-tight)}
   .rg + .rg{padding-left:0;border-left:0}
   .sec{padding:var(--s-7) 0}
   .hero{padding:calc(var(--nav-h) + var(--s-6)) 0 var(--s-7)}
+  .article-body{padding-left:var(--s-4);max-width:none}
 }
 
 /* ---------- 16. 打印 ---------- */
@@ -825,12 +849,6 @@ h1,h2,h3{font-weight:var(--fw-bold);line-height:var(--lh-tight)}
                  onerror="this.remove();document.getElementById('ph-c2').classList.add('empty')">
             <figcaption>视频号 · 发布页</figcaption>
           </figure>
-          <video class="video" controls preload="none" poster="assets/case2-cover.jpg"
-               src="https://aka.doubaocdn.com/s/Qr5kCNPGqo"
-               onerror="this.style.display='none'"></video>
-        </div>
-        <div class="media-links">
-          <a href="https://weixin.qq.com/sph/APBWiWHM1o" target="_blank" rel="noopener">在微信中观看视频 →</a>
         </div>
       </div>
 
@@ -896,9 +914,10 @@ h1,h2,h3{font-weight:var(--fw-bold);line-height:var(--lh-tight)}
                  onerror="this.remove();document.getElementById('ph-c3').classList.add('empty')">
             <figcaption>哔哔News · 发布页</figcaption>
           </figure>
-          <video class="video" controls preload="none" poster="assets/case3-cover.jpg"
-               src="https://aka.doubaocdn.com/s/yEGd2xU7eC"
-               onerror="this.style.display='none'"></video>
+          <video class="video" controls preload="metadata" poster="assets/case3-cover.jpg"
+               src="assets/case3-video.mp4">
+            <p>您的浏览器不支持内嵌视频播放。</p>
+          </video>
         </div>
       </div>
 
@@ -959,9 +978,6 @@ h1,h2,h3{font-weight:var(--fw-bold);line-height:var(--lh-tight)}
                onerror="this.remove();document.getElementById('ph-c4').classList.add('empty')">
           <figcaption>X 推文长图</figcaption>
         </figure>
-        <div class="media-links">
-          <a href="https://aka.doubaocdn.com/s/qFOYlBtc0s" target="_blank" rel="noopener">查看完整原文（Word）→</a>
-        </div>
       </div>
 
       <div class="case-panel rv">
@@ -1010,6 +1026,30 @@ h1,h2,h3{font-weight:var(--fw-bold);line-height:var(--lh-tight)}
         <div><div class="rg-v num">386K+</div><div class="rg-d">阅读</div></div>
       </div>
     </div>
+
+    <details class="article">
+      <summary class="article-toggle">阅读完整文章<span class="ar" aria-hidden="true">▾</span></summary>
+      <div class="article-body">
+        <p class="article-lead">小红书被前员工实名举报，在冲刺港股IPO、估值直奔300亿-700亿美元的关键窗口期。</p>
+        <p>举报内容并不是劳动纠纷本身，是很多互联网公司VIE架构的信息披露问题。</p>
+        <p>2022年，陈浩加入小红书，担任商业化华南直销负责人，当时他是年度绩效超120%的区域销售负责人。</p>
+        <p>入职时，他的劳动合同签的是境内运营主体薯一薯二文化传媒，员工期权则签给了境外主体 Xingin International Holding，俗称小地瓜。</p>
+        <p>他拿到了3万股期权，分四年归属。</p>
+        <p>2023年12月，距离第一批期权归属只剩约5个月。陈浩却收到了解除劳动合同通知。</p>
+        <p>小红书给出的理由是「不能胜任工作」。劳动关系结束的同时，3万股尚未归属的境外期权也失效。</p>
+        <p>陈浩拒绝了小红书提出的11万元赔偿。两年时间，他先后打了劳动仲裁、违法解除劳动关系诉讼、期权损失诉讼。</p>
+        <p>庭审中，小红书当时的抗辩理由是：期权是境外公司发的，签协议的是小地瓜，不是小红书。</p>
+        <p>这就是典型的VIE架构操作：境内运营实体和境外上市主体通过协议控制，看起来是一家，但打官司的时候又可以瞬间切割成两家公司。</p>
+        <p>简单理解就是，员工起诉的是「周树人」，公司就回应：「跟鲁迅无关。」</p>
+        <p>最终法院没有采纳这一主张。两案下来，陈浩最终获赔约85万元。</p>
+        <p>于是，今年6月，小红书正筹备港股IPO，高盛、中金等机构被曝参与上市工作，市场估值传闻已经来到数百亿美元。</p>
+        <p>陈浩把法院判决、庭审材料、离职证明等整套资料，实名提交给港交所上市部和香港证监会。</p>
+        <p>回旋镖打回来了，当初自己说小红薯和小地瓜是两家公司，现在要上市，就得证明小红薯和小地瓜是一家才行。</p>
+        <p>如果港交所认为举报涉及重大信息披露事项，小红书大概率会被要求补充说明、更新招股书内容，甚至接受多轮问询。</p>
+        <p>最现实的结果就是审核周期拉长，挂牌时间推迟。</p>
+        <p class="article-note">文中关于 IPO 审核影响的内容为原文发布时的判断，不代表相关结果已获确认。</p>
+      </div>
+    </details>
   </div>
 </article>
 
